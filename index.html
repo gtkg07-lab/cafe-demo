@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ひだまり珈琲｜自家焙煎のコーヒーと手づくりおやつの小さなカフェ</title>
+<meta name="description" content="ひだまり珈琲は、自家焙煎のコーヒーと毎朝焼く手づくりおやつのお店です。駅から徒歩3分、窓際の席でゆっくり過ごせます。営業時間・メニュー・アクセスはこちら。">
+<meta property="og:title" content="ひだまり珈琲">
+<meta property="og:description" content="自家焙煎のコーヒーと手づくりおやつの小さなカフェ">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#5b3a29">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Googleで「お店」として認識してもらうための情報（構造化データ） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "ひだまり珈琲",
+  "description": "自家焙煎のコーヒーと手づくりおやつの小さなカフェ（制作デモ用の架空の店舗）",
+  "servesCuisine": "コーヒー、焼き菓子、軽食",
+  "priceRange": "¥500〜¥1,500",
+  "openingHours": ["Tu-Fr 09:00-18:00", "Sa-Su 08:00-19:00"]
+}
+</script>
+<style>
+  :root {
+    --cream: #faf6f0;
+    --paper: #fffdf9;
+    --brown: #5b3a29;
+    --brown-2: #8a5a3c;
+    --terra: #c8693c;
+    --leaf: #7a8b5a;
+    --ink: #3a2a20;
+    --muted: #8a7a6e;
+    --line: #eadfd2;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  .mincho { font-family: "Shippori Mincho", serif; }
+
+  /* ヘッダー */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(250, 246, 240, .92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo b { font-family: "Shippori Mincho", serif; font-size: 20px; color: var(--brown); letter-spacing: .08em; }
+  nav { display: flex; gap: 22px; font-size: 14px; }
+  nav a { text-decoration: none; color: var(--brown); }
+  nav a:hover { color: var(--terra); }
+  .menu-btn { display: none; background: none; border: 0; padding: 8px; cursor: pointer; }
+  .menu-btn span { display: block; width: 22px; height: 2px; background: var(--brown); margin: 5px 0; border-radius: 2px; }
+
+  /* ファーストビュー */
+  .hero { position: relative; overflow: hidden; padding: 56px 0 72px; }
+  .hero::before {
+    content: ""; position: absolute; inset: -40% -20% auto auto; width: 720px; height: 720px;
+    background: radial-gradient(circle, #ffe6c7 0%, rgba(255, 230, 199, 0) 65%);
+  }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+  .eyebrow { display: inline-block; font-size: 13px; color: var(--leaf); border: 1px solid var(--leaf); border-radius: 99px; padding: 2px 14px; }
+  .hero h1 { font-family: "Shippori Mincho", serif; font-size: clamp(34px, 6vw, 56px); line-height: 1.35; color: var(--brown); margin: 18px 0 16px; letter-spacing: .04em; }
+  .hero h1 span { display: inline-block; } /* 「場所。」の途中で折り返さない */
+  .hero p { color: var(--brown-2); margin: 0 0 28px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    padding: 12px 24px; border-radius: 99px; font-weight: 700; font-size: 15px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(91, 58, 41, .15); }
+  .btn-main { background: var(--terra); color: #fff; }
+  .btn-sub { background: var(--paper); color: var(--brown); border: 1px solid var(--line); }
+  .hero-art { position: relative; }
+  .steam path { animation: steam 4s ease-in-out infinite; transform-origin: center; }
+  .steam path:nth-child(2) { animation-delay: .8s; }
+  .steam path:nth-child(3) { animation-delay: 1.6s; }
+  @keyframes steam { 0%, 100% { opacity: .15; transform: translateY(6px); } 50% { opacity: .8; transform: translateY(-6px); } }
+
+  /* セクション共通 */
+  section { padding: 72px 0; }
+  .sec-head { text-align: center; margin-bottom: 40px; }
+  .sec-head small { display: block; color: var(--terra); letter-spacing: .3em; font-size: 12px; }
+  .sec-head h2 { font-family: "Shippori Mincho", serif; font-size: clamp(26px, 4vw, 34px); color: var(--brown); margin: 6px 0 0; }
+  .alt { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+  /* お知らせ */
+  .news { max-width: 720px; margin: 0 auto; list-style: none; padding: 0; }
+  .news li { display: flex; gap: 18px; padding: 14px 4px; border-bottom: 1px dashed var(--line); }
+  .news time { color: var(--muted); font-size: 14px; flex: none; width: 92px; }
+  .tag { display: inline-block; font-size: 11px; background: var(--leaf); color: #fff; border-radius: 4px; padding: 0 8px; margin-right: 8px; vertical-align: 2px; }
+
+  /* こだわり */
+  .points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 24px; }
+  .alt .card { background: var(--cream); }
+  .card .icon { width: 64px; height: 64px; margin-bottom: 14px; }
+  .card h3 { font-family: "Shippori Mincho", serif; color: var(--brown); font-size: 20px; margin: 0 0 8px; }
+  .card p { margin: 0; color: var(--brown-2); font-size: 15px; }
+
+  /* メニュー */
+  .tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+  .tabs button {
+    font: inherit; font-size: 14px; border: 1px solid var(--line); background: var(--paper); color: var(--brown);
+    padding: 8px 20px; border-radius: 99px; cursor: pointer;
+  }
+  .tabs button[aria-selected="true"] { background: var(--brown); color: #fff; border-color: var(--brown); }
+  .menu-list { max-width: 720px; margin: 0 auto; display: none; }
+  .menu-list.on { display: block; }
+  .item { display: flex; align-items: baseline; gap: 10px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .item .name { font-weight: 700; color: var(--brown); }
+  .item .desc { display: block; font-size: 13px; color: var(--muted); font-weight: 400; }
+  .item .dots { flex: 1; border-bottom: 2px dotted var(--line); transform: translateY(-4px); min-width: 20px; }
+  .item .price { font-family: "Shippori Mincho", serif; font-weight: 800; color: var(--terra); white-space: nowrap; }
+  .new { font-size: 11px; color: #fff; background: var(--terra); border-radius: 4px; padding: 0 6px; margin-left: 6px; vertical-align: 2px; }
+  .note { text-align: center; font-size: 13px; color: var(--muted); margin-top: 18px; }
+
+  /* 店内の様子 */
+  .gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+  .shot { border-radius: var(--radius); overflow: hidden; position: relative; aspect-ratio: 4 / 3; }
+  .shot:first-child { grid-row: span 2; aspect-ratio: auto; }
+  .shot svg { width: 100%; height: 100%; }
+  .shot figcaption {
+    position: absolute; left: 12px; bottom: 12px; background: rgba(255, 253, 249, .92);
+    font-size: 13px; color: var(--brown); padding: 2px 12px; border-radius: 99px;
+  }
+
+  /* 営業時間・アクセス */
+  .info { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  table { width: 100%; border-collapse: collapse; background: var(--paper); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--line); font-size: 15px; vertical-align: top; }
+  th { width: 34%; color: var(--brown); background: #f6efe6; font-weight: 700; }
+  tr:last-child th, tr:last-child td { border-bottom: 0; }
+  .closed { color: var(--terra); font-weight: 700; }
+  .map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
+  .map-cap { padding: 12px 18px; font-size: 13px; color: var(--muted); }
+
+  /* お問い合わせ */
+  .contact { text-align: center; }
+  .contact p { color: var(--brown-2); margin: 0 0 24px; }
+  .contact .btns { justify-content: center; }
+
+  footer { background: var(--brown); color: #efe3d6; padding: 40px 0 96px; text-align: center; font-size: 13px; }
+  footer b { font-family: "Shippori Mincho", serif; font-size: 20px; letter-spacing: .1em; color: #fff; display: block; margin-bottom: 6px; }
+  .demo-note { margin-top: 18px; opacity: .75; }
+
+  /* スマホ下の固定ボタン */
+  .fixed-cta { display: none; }
+
+  @media (max-width: 760px) {
+    nav {
+      position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line); display: none;
+    }
+    nav.open { display: flex; }
+    nav a { padding: 14px 20px; border-top: 1px solid var(--line); }
+    .menu-btn { display: block; }
+    .hero { padding: 32px 0 48px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 12px; }
+    .hero-art { order: -1; max-width: 300px; margin: 0 auto; }
+    section { padding: 56px 0; }
+    .points, .info { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: 1fr 1fr; }
+    .shot:first-child { grid-column: span 2; grid-row: auto; aspect-ratio: 16 / 10; }
+    .news li { flex-direction: column; gap: 0; }
+    .fixed-cta {
+      display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 20; gap: 8px;
+    }
+    .fixed-cta a {
+      flex: 1; text-align: center; text-decoration: none; font-weight: 700; padding: 12px; border-radius: 99px;
+      box-shadow: 0 6px 18px rgba(58, 42, 32, .2);
+    }
+    .fixed-cta .tel { background: var(--paper); color: var(--brown); border: 1px solid var(--line); }
+    .fixed-cta .go { background: var(--terra); color: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="ひだまり珈琲 トップへ">
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="#c8693c"/>
+        <path d="M11 17h15v6a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7z" fill="#fffdf9"/>
+        <path d="M26 19h2a3 3 0 0 1 0 6h-2" fill="none" stroke="#fffdf9" stroke-width="2"/>
+        <path d="M15 8c-2 3 2 4 0 7M20 8c-2 3 2 4 0 7" fill="none" stroke="#fffdf9" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <b>ひだまり珈琲</b>
+    </a>
+    <button class="menu-btn" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav>
+      <a href="#about">こだわり</a>
+      <a href="#menu">メニュー</a>
+      <a href="#space">店内</a>
+      <a href="#access">営業時間・アクセス</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ファーストビュー -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">自家焙煎のコーヒーと、手づくりおやつ</span>
+        <h1><span>いつもの一杯で、</span><span>ひと息つける場所。</span></h1>
+        <p>駅から歩いて3分。大きな窓から光が差し込む、20席ほどの小さなカフェです。毎朝焼くスコーンと、店で焙煎したコーヒーでお待ちしています。</p>
+        <div class="btns">
+          <a class="btn btn-main" href="#menu">メニューを見る</a>
+          <a class="btn btn-sub" href="#access">営業時間・アクセス</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 360 320">
+          <defs>
+            <linearGradient id="cup" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#fffdf9"/><stop offset="1" stop-color="#f1e6d8"/>
+            </linearGradient>
+            <linearGradient id="coffee" x1="0" x2="1">
+              <stop offset="0" stop-color="#6b432e"/><stop offset="1" stop-color="#8a5a3c"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="180" cy="282" rx="140" ry="22" fill="#eadfd2"/>
+          <ellipse cx="180" cy="268" rx="118" ry="20" fill="#fffdf9" stroke="#e2d4c3" stroke-width="2"/>
+          <path d="M84 132h192l-14 98a46 46 0 0 1-45 40h-74a46 46 0 0 1-45-40z" fill="url(#cup)" stroke="#e2d4c3" stroke-width="2"/>
+          <path d="M276 150h14a30 30 0 0 1 0 60h-22" fill="none" stroke="#e2d4c3" stroke-width="14" stroke-linecap="round"/>
+          <ellipse cx="180" cy="132" rx="96" ry="18" fill="url(#coffee)"/>
+          <path d="M160 128c10-8 30-8 40 0-10 6-30 6-40 0z" fill="#d9b48f" opacity=".8"/>
+          <path d="M104 190h152" stroke="#c8693c" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+          <g class="steam" fill="none" stroke="#c9b6a3" stroke-width="6" stroke-linecap="round">
+            <path d="M146 96c-14-18 14-26 0-46"/>
+            <path d="M180 92c-14-18 14-26 0-46"/>
+            <path d="M214 96c-14-18 14-26 0-46"/>
+          </g>
+          <circle cx="56" cy="250" r="14" fill="#7a8b5a"/>
+          <path d="M56 236c-2-10 6-16 12-14-1 8-6 12-12 14z" fill="#7a8b5a"/>
+          <ellipse cx="312" cy="262" rx="20" ry="12" fill="#d9a066"/>
+          <ellipse cx="312" cy="258" rx="16" ry="8" fill="#e8b97f"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- お知らせ -->
+  <section class="alt" id="news">
+    <div class="wrap">
+      <div class="sec-head"><small>NEWS</small><h2>お知らせ</h2></div>
+      <ul class="news">
+        <li><time>2026.10.18</time><span><span class="tag">新メニュー</span>秋限定「さつまいもとくるみのスコーン」がはじまりました。</span></li>
+        <li><time>2026.10.05</time><span><span class="tag">営業</span>10月は毎週月曜日がお休みです（祝日は営業します）。</span></li>
+        <li><time>2026.09.20</time><span><span class="tag">お知らせ</span>コーヒー豆の量り売りを始めました。挽き具合もご相談ください。</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- こだわり -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><small>ABOUT</small><h2>3つのこだわり</h2></div>
+      <div class="points">
+        <div class="card">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#f6e3d3"/>
+            <ellipse cx="25" cy="33" rx="9" ry="13" transform="rotate(-25 25 33)" fill="#6b432e"/>
+            <path d="M21 22c4 6 4 14 0 20" transform="rotate(-25 25 33)" stroke="#c9a37f" stroke-width="2" fill="none"/>
+            <ellipse cx="40" cy="31" rx="9" ry="13" transform="rotate(20 40 31)" fill="#8a5a3c"/>
+            <path d="M36 20c4 6 4 14 0 20" transform="rotate(20 40 31)" stroke="#d9b48f" stroke-width="2" fill="none"/>
+          </svg>
+          <h3>店内で焙煎する豆</h3>
+          <p>焙煎は毎週、店の奥の小さな焙煎機で。いちばんおいしい2週間のうちに使い切ります。</p>
+        </div>
+        <div class="card">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#f6e3d3"/>
+            <path d="M14 40c0-12 8-20 18-20s18 8 18 20z" fill="#d9a066"/>
+            <path d="M16 40h32v4a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4z" fill="#c8693c"/>
+            <path d="M24 30c2-2 5-2 7 0M34 28c2-2 5-2 7 0" stroke="#f5d6ad" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+          </svg>
+          <h3>毎朝焼くおやつ</h3>
+          <p>スコーンやケーキは、開店前に店で焼いています。売り切れたら、その日はおしまいです。</p>
+        </div>
+        <div class="card">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#e7ecdc"/>
+            <rect x="16" y="16" width="32" height="26" rx="3" fill="#fffdf9" stroke="#7a8b5a" stroke-width="2.4"/>
+            <path d="M32 16v26M16 29h32" stroke="#7a8b5a" stroke-width="2.4"/>
+            <path d="M22 50h20" stroke="#7a8b5a" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="46" cy="18" r="6" fill="#f2c26b"/>
+          </svg>
+          <h3>窓際の、ゆっくり席</h3>
+          <p>大きな窓に面したカウンター席は、おひとりさまに人気。電源とWi-Fiもあります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- メニュー -->
+  <section class="alt" id="menu">
+    <div class="wrap">
+      <div class="sec-head"><small>MENU</small><h2>メニュー</h2></div>
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="drink">ドリンク</button>
+        <button role="tab" aria-selected="false" data-tab="sweets">おやつ</button>
+        <button role="tab" aria-selected="false" data-tab="food">軽食</button>
+      </div>
+
+      <div class="menu-list on" id="tab-drink" role="tabpanel">
+        <div class="item"><span class="name">ひだまりブレンド<span class="desc">深めの焙煎。苦みとコクのバランスがいちばん人気です</span></span><span class="dots"></span><span class="price">¥550</span></div>
+        <div class="item"><span class="name">本日のシングルオリジン<span class="desc">季節ごとに産地が変わります。店頭の黒板をご覧ください</span></span><span class="dots"></span><span class="price">¥650</span></div>
+        <div class="item"><span class="name">カフェラテ<span class="desc">ホット／アイス。オーツミルクにも変更できます（＋¥50）</span></span><span class="dots"></span><span class="price">¥600</span></div>
+        <div class="item"><span class="name">ほうじ茶ラテ</span><span class="dots"></span><span class="price">¥580</span></div>
+        <div class="item"><span class="name">自家製レモネード</span><span class="dots"></span><span class="price">¥520</span></div>
+      </div>
+
+      <div class="menu-list" id="tab-sweets" role="tabpanel">
+        <div class="item"><span class="name">さつまいもとくるみのスコーン<span class="new">秋限定</span><span class="desc">クロテッドクリームとジャムを添えて</span></span><span class="dots"></span><span class="price">¥480</span></div>
+        <div class="item"><span class="name">プレーンスコーン</span><span class="dots"></span><span class="price">¥380</span></div>
+        <div class="item"><span class="name">濃厚チーズケーキ</span><span class="dots"></span><span class="price">¥550</span></div>
+        <div class="item"><span class="name">季節のタルト<span class="desc">10月はりんごのタルトです</span></span><span class="dots"></span><span class="price">¥600</span></div>
+      </div>
+
+      <div class="menu-list" id="tab-food" role="tabpanel">
+        <div class="item"><span class="name">たまごサンド<span class="desc">厚焼きたまごをはさんだ、ふわふわのサンドイッチ</span></span><span class="dots"></span><span class="price">¥780</span></div>
+        <div class="item"><span class="name">本日のスープとパンのセット</span><span class="dots"></span><span class="price">¥950</span></div>
+        <div class="item"><span class="name">モーニングセット<span class="desc">土日 8:00〜10:30。トースト・ゆでたまご・ドリンク</span></span><span class="dots"></span><span class="price">¥700</span></div>
+      </div>
+      <p class="note">価格はすべて税込です。テイクアウトもできます。</p>
+    </div>
+  </section>
+
+  <!-- 店内の様子 -->
+  <section id="space">
+    <div class="wrap">
+      <div class="sec-head"><small>SPACE</small><h2>店内の様子</h2></div>
+      <div class="gallery">
+        <figure class="shot" style="margin:0">
+          <svg viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="400" height="420" fill="#f3e4d1"/>
+            <rect x="40" y="40" width="320" height="230" rx="10" fill="#cfe3ea"/>
+            <path d="M200 40v230M40 155h320" stroke="#fffdf9" stroke-width="10"/>
+            <circle cx="300" cy="90" r="26" fill="#ffe2a8"/>
+            <path d="M60 270c40-50 90-60 130-30 30-30 80-30 150 30z" fill="#a9bf8e" opacity=".8"/>
+            <rect x="20" y="270" width="360" height="22" fill="#8a5a3c"/>
+            <rect x="70" y="236" width="40" height="34" rx="6" fill="#fffdf9"/>
+            <path d="M110 244h8a8 8 0 0 1 0 16h-8" fill="none" stroke="#fffdf9" stroke-width="4"/>
+            <rect x="270" y="210" width="30" height="60" rx="4" fill="#7a8b5a"/>
+            <circle cx="285" cy="200" r="22" fill="#94a874"/>
+            <rect x="80" y="292" width="10" height="110" fill="#6b432e"/>
+            <rect x="310" y="292" width="10" height="110" fill="#6b432e"/>
+            <rect x="130" y="330" width="60" height="12" rx="6" fill="#c8693c"/>
+            <rect x="155" y="342" width="10" height="60" fill="#6b432e"/>
+          </svg>
+          <figcaption>窓際のカウンター席</figcaption>
+        </figure>
+        <figure class="shot" style="margin:0">
+          <svg viewBox="0 0 300 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="300" height="225" fill="#e9dccb"/>
+            <rect x="0" y="150" width="300" height="75" fill="#8a5a3c"/>
+            <rect x="30" y="40" width="240" height="70" rx="6" fill="#5b3a29"/>
+            <path d="M50 60h80M50 76h120M50 92h60" stroke="#fffdf9" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+            <rect x="190" y="110" width="50" height="40" rx="6" fill="#c9cfd1"/>
+            <circle cx="215" cy="104" r="12" fill="#a3aaad"/>
+            <rect x="60" y="126" width="22" height="24" rx="4" fill="#fffdf9"/>
+            <rect x="94" y="122" width="22" height="28" rx="4" fill="#f2c26b"/>
+          </svg>
+          <figcaption>焙煎機のあるカウンター</figcaption>
+        </figure>
+        <figure class="shot" style="margin:0">
+          <svg viewBox="0 0 300 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="300" height="225" fill="#f6efe6"/>
+            <ellipse cx="150" cy="150" rx="110" ry="40" fill="#e2d4c3"/>
+            <ellipse cx="150" cy="140" rx="96" ry="32" fill="#fffdf9"/>
+            <path d="M96 140c0-30 24-48 54-48s54 18 54 48z" fill="#d9a066"/>
+            <path d="M110 118c6-6 14-6 20 0M150 110c6-6 14-6 20 0" stroke="#f5d6ad" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <ellipse cx="236" cy="132" rx="16" ry="8" fill="#fffdf9" stroke="#e2d4c3" stroke-width="2"/>
+            <ellipse cx="236" cy="130" rx="11" ry="5" fill="#c8693c"/>
+          </svg>
+          <figcaption>毎朝焼くスコーン</figcaption>
+        </figure>
+        <figure class="shot" style="margin:0">
+          <svg viewBox="0 0 300 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="300" height="225" fill="#e7ecdc"/>
+            <rect x="0" y="160" width="300" height="65" fill="#cdb79e"/>
+            <rect x="40" y="60" width="90" height="100" rx="45" fill="#fffdf9" stroke="#7a8b5a" stroke-width="4"/>
+            <rect x="170" y="60" width="90" height="100" rx="45" fill="#fffdf9" stroke="#7a8b5a" stroke-width="4"/>
+            <circle cx="85" cy="150" r="14" fill="#94a874"/>
+            <circle cx="215" cy="150" r="14" fill="#94a874"/>
+            <rect x="120" y="128" width="60" height="10" rx="5" fill="#8a5a3c"/>
+            <rect x="145" y="138" width="10" height="22" fill="#6b432e"/>
+          </svg>
+          <figcaption>テーブル席（4名まで）</figcaption>
+        </figure>
+      </div>
+      <p class="note">※ 写真の部分は、お店の実際の写真に差し替えて使います。</p>
+    </div>
+  </section>
+
+  <!-- 営業時間・アクセス -->
+  <section class="alt" id="access">
+    <div class="wrap">
+      <div class="sec-head"><small>ACCESS</small><h2>営業時間・アクセス</h2></div>
+      <div class="info">
+        <table>
+          <tr><th>営業時間</th><td>火〜金　9:00〜18:00<br>土・日　8:00〜19:00<br><small style="color:var(--muted)">（ラストオーダーは閉店の30分前）</small></td></tr>
+          <tr><th>定休日</th><td><span class="closed">毎週月曜日</span>（祝日の場合は営業）</td></tr>
+          <tr><th>席数</th><td>20席（カウンター8席・テーブル12席）</td></tr>
+          <tr><th>住所</th><td>〇〇県〇〇市ひだまり町1-2-3<br><small style="color:var(--muted)">（架空の住所です）</small></td></tr>
+          <tr><th>アクセス</th><td>〇〇駅 東口から徒歩3分</td></tr>
+          <tr><th>お支払い</th><td>現金・クレジットカード・QRコード決済</td></tr>
+        </table>
+        <div class="map">
+          <svg viewBox="0 0 480 320" aria-label="お店までの地図（イメージ）" role="img">
+            <rect width="480" height="320" fill="#f3ede4"/>
+            <path d="M0 210h480M150 0v320M330 0v320" stroke="#fffdf9" stroke-width="26"/>
+            <path d="M0 210h480M150 0v320M330 0v320" stroke="#e6dccd" stroke-width="2" stroke-dasharray="8 8"/>
+            <rect x="20" y="230" width="110" height="70" rx="8" fill="#dfe6ef"/>
+            <text x="75" y="272" text-anchor="middle" font-size="16" fill="#4c6282" font-family="sans-serif">〇〇駅</text>
+            <rect x="350" y="40" width="110" height="140" rx="8" fill="#e7ecdc"/>
+            <text x="405" y="116" text-anchor="middle" font-size="14" fill="#5f6f45" font-family="sans-serif">公園</text>
+            <rect x="170" y="40" width="140" height="70" rx="8" fill="#efe3d6"/>
+            <path d="M75 230V210h180V150" fill="none" stroke="#c8693c" stroke-width="5" stroke-dasharray="2 10" stroke-linecap="round"/>
+            <circle cx="255" cy="140" r="26" fill="#c8693c"/>
+            <path d="M244 136h16v5a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z" fill="#fffdf9"/>
+            <path d="M260 138h3a2.5 2.5 0 0 1 0 5h-3" fill="none" stroke="#fffdf9" stroke-width="2"/>
+            <text x="255" y="186" text-anchor="middle" font-size="15" font-weight="bold" fill="#5b3a29" font-family="sans-serif">ひだまり珈琲</text>
+          </svg>
+          <div class="map-cap">駅の東口を出て右へ。1つ目の角を左に曲がってすぐです。<br>（実際のサイトでは、Googleマップを埋め込みます）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head"><small>CONTACT</small><h2>お問い合わせ</h2></div>
+      <p>貸切・ケーキのご予約・豆のご注文は、お電話かInstagramのメッセージでどうぞ。</p>
+      <div class="btns">
+        <a class="btn btn-main" href="#contact">📞 000-0000-0000</a>
+        <a class="btn btn-sub" href="#contact">Instagramを見る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <b>ひだまり珈琲</b>
+  〇〇県〇〇市ひだまり町1-2-3　／　火〜金 9:00〜18:00・土日 8:00〜19:00（月曜定休）
+  <div class="demo-note">※ このサイトはホームページ制作のデモ用に作った架空のお店です。実在の店舗ではありません。</div>
+</footer>
+
+<div class="fixed-cta">
+  <a class="tel" href="#contact">📞 電話する</a>
+  <a class="go" href="#access">アクセス</a>
+</div>
+
+<script>
+  // スマホのメニュー開閉
+  const btn = document.querySelector('.menu-btn');
+  const nav = document.querySelector('nav');
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+  }));
+
+  // メニューのタブ切り替え
+  document.querySelectorAll('.tabs button').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(t => t.setAttribute('aria-selected', t === tab));
+      document.querySelectorAll('.menu-list').forEach(l => l.classList.toggle('on', l.id === 'tab-' + tab.dataset.tab));
+    });
+  });
+</script>
+</body>
+</html>
